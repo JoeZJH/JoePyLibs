@@ -26,3 +26,13 @@ def get_top_k_indexes_of_list(target_list, k, is_max=True):
     return indexes
 
 
+def get_elements_from_list(target_list, indexes):
+    """
+    get elements from target_list by indexes
+    :param target_list: target list
+    :param indexes: a list of indexes
+    :return: a list of elements
+    """
+    elements = [target_list[i] for i in indexes]
+    return elements
+
