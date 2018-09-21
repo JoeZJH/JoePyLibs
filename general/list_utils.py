@@ -5,7 +5,7 @@ This file contains some pretty functions
 """
 
 
-def get_top_k_indexes_of_list(target_list, k, is_max=True):
+def get_top_k_indexes_of_list(target_list, k, is_max=True, min_value=None):
     """
     get the top k indexes of elements in list
 
@@ -20,10 +20,20 @@ def get_top_k_indexes_of_list(target_list, k, is_max=True):
     :param target_list: target list
     :param k: the number of indexes
     :param is_max: True means max else False means min
+    :param min_value: if min_value is not None
+            filter the indexes whose value less than or equals to min_value
     :return: a list of indexes
     """
     indexes = sorted(range(len(target_list)), key=lambda i: target_list[i], reverse=is_max)[:k]
-    return indexes
+    result = list()
+    if min_value is not None:
+        for index in indexes:
+            if target_list[index] <= min_value:
+                break
+            result.append(index)
+    else:
+        result = indexes
+    return result
 
 
 def get_elements_from_list(target_list, indexes):
